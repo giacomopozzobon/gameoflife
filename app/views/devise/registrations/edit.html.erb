@@ -1,49 +1,63 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="row">
+  <div class="col">
+    <div class="card text-bg-light mb-3" style="max-width: 30rem;">
+      <div class="card-header"><h4>Edit <%= resource_name.to_s.humanize %></h4></div>
+      <div class="card-body">
+        
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+          <div class="mb-3">
+            <%= f.label :email, class:"form-label" %><br />
+            <%= f.email_field :email, class:"form-control", autofocus: true, autocomplete: "email" %>
+          </div>
 
-  <div class="mb-3">
-    <%= f.label :email, class:"form-label" %><br />
-    <%= f.email_field :email, class:"form-control", autofocus: true, autocomplete: "email" %>
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+          <% end %>
+
+          <div class="mb-5">
+            <%= f.password_field :current_password, class:"form-control", placeholder: true , autocomplete: "current-password" %>
+          </div>
+
+          <div class="mb-3">
+            <%= f.label :password, class:"form-label" %> <i>(leave blank if you don't want to change it)</i><br />
+            <%= f.password_field :password, class:"form-control", autocomplete: "new-password" %>
+            <% if @minimum_password_length %>
+              <br />
+              <em><%= @minimum_password_length %> characters minimum</em>
+            <% end %>
+          </div>
+
+          <div class="mb-4">
+            <%= f.label :password_confirmation, class:"form-label" %><br />
+            <%= f.password_field :password_confirmation, class:"form-control", autocomplete: "new-password" %>
+          </div>
+
+          <div class="mb-2">
+            <%= f.submit "Update", data: {turbo: false}, class: "btn btn-primary" %>
+            <%= link_to "Back", :back, class:"btn btn-light" %>
+          </div>
+        <% end %>
+
+      </div>
+    </div>
   </div>
+  <div class="col">
+    <div class="card text-bg-danger mb-3" style="max-width: 30rem;">
+      <div class="card-header">
+        <h5>Cancel Account</h5>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Unhappy?</h5>
+        <p class="card-text">If you are not having fun with '<i>Game of Life</i>', it's ok.</p>
+        <%= link_to "Delete Account", registration_path(resource_name), data: { turbo_method: :delete, turbo_confirm: "Are you happy to delete 4ever?" }, class:"btn btn-light" %>
+      </div>
+    </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="mb-5">
-    <%= f.label :current_password, class:"form-label" %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, class:"form-control", autocomplete: "current-password" %>
-  </div>
-
-  <div class="mb-3">
-    <%= f.label :password, class:"form-label" %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, class:"form-control", autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
-
-  <div class="mb-4">
-    <%= f.label :password_confirmation, class:"form-label" %><br />
-    <%= f.password_field :password_confirmation, class:"form-control", autocomplete: "new-password" %>
-  </div>
-
-  <div class="mb-5">
-    <%= f.submit "Update", data: {turbo: false}, class: "btn btn-primary" %>
-    <%= link_to "Back", :back, class:"btn btn-light" %>
-  </div>
-<% end %>
-
-<div class="card mb-3">
-  <div class="card-header">
-    <h5>Cancel my account</h5>
-  </div>
-  <div class="card-body">
-    <h5 class="card-title">Unhappy?</h5>
-    <p class="card-text">If you are not having fun with my application, please, delete your account...</p>
-    <%= link_to "Delete Account", registration_path(resource_name), data: { turbo_method: :delete, turbo_confirm: "Are you happy to delete 4ever?" }, class:"btn btn-danger" %>
   </div>
 </div>
+
+
+
+
