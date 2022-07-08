@@ -1,2 +1,20 @@
 <h1>Game of Life</h1>
-<p>This code kata is based on Conway's Game of Life</p>
+<p class="mb-5">This code kata is based on Conway's Game of Life</p>
+
+<h4>To Start</h4>
+<% if user_signed_in? %>
+
+	<p class="mb-3">To start 'Game of Life' please, upload a init File</p>
+
+	<%= form_tag '/home/uploadfile' ,multipart: true do %>
+	  
+	  <div class="mb-3"><%= file_field_tag "file" %></div>
+
+	  <%= submit_tag "Start", class: "btn btn-primary mb-2" %>
+	<% end %>
+
+<% else %>
+
+	<p class="mb-3">To start 'Game of Life' <%= link_to "Log in", new_user_session_path %>.<br>If you don't have an account <%= link_to "register here.", new_user_registration_path %></p>
+
+<% end %>

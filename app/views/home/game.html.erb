@@ -1,0 +1,9 @@
+<h1>The game.. maybe</h1>
+
+<p class="mb-5">The game is still under developing...</p>
+
+<% if @lines.count > 0 && user_signed_in? %>
+	<hr>
+	<p class="mb-3">File letto correttamente...</p>
+	<%= @lines.each { |line| puts line } %>
+<% end %>
