@@ -7,6 +7,7 @@ test:
   adapter: test
 
 production:
-  adapter: redis
-  url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } %>
-  channel_prefix: gameoflife_production
+  adapter: async
+  #adapter: redis
+  #url: <%= ENV.fetch("REDIS_URL") { " rediss://:p9ef006eef56aeede25cef5921c378dfbc9fea6b2408c8e92b1a941c97b550035@ec2-34-243-35-75.eu-west-1.compute.amazonaws.com:28700" } %>
+  #channel_prefix: gameoflife_production
