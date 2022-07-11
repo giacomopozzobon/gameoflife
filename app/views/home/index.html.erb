@@ -12,10 +12,10 @@
         	<p class="card-text">To start 'Game of Life' please, upload a init File.<br/><b>Keep attention</b>: the file <u>must</u> be a <i>.txt</i> structured as follow.<br><i>es.</i><br>Generation 3:<br>4 8<br>........<br>....*...<br>...**...<br>........<br></p>
 
         	<hr>
-        	<%= form_tag '/home/uploadfile' , multipart: true do %>
-	  			<div class="mb-3"><%= file_field_tag "file" %></div>
-	  			<%= submit_tag "Start", class: "btn btn-primary mb-2" %>
-			<% end %>
+          <%= form_tag '/upload' , multipart: true do %>
+            <div class="mb-3"><%= file_field_tag "input_file" ,class: 'form-control', required: true, accept: "text/plain" %></div>
+            <%= submit_tag "Start", class: "btn btn-primary mb-2" %>
+          <% end %>
         
         <% else %>
 

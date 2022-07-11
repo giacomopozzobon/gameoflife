@@ -17,12 +17,19 @@ gem "tzinfo"
 gem "bootsnap", require: false
 gem 'devise', '~> 4.8', '>= 4.8.1'
 
+# Use Redis adapter to run Action Cable in production
+gem 'redis', '~> 4.0'
+
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
 end
 
 group :development do
   gem "web-console"
+  gem 'rack-mini-profiler', '~> 2.0'
+  gem 'listen', '~> 3.7', '>= 3.7.1'
+  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'spring'
 end
 
 group :test do

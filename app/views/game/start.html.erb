@@ -1,0 +1,23 @@
+<% if !user_signed_in? %>
+	<h1>The game.. maybe</h1>
+	<p class="mb-5">Try doing Login...</p>
+
+<% else %>
+
+	<% @game = session[:game] %>
+	<% @game['data'] = @out[:data] %>
+
+	<div class="card text-bg-light mb-3" style="max-width: 35rem;">
+		<div class="card-header">Game of Life</div>
+  		<div class="card-body">
+    		<h5 class="card-title">End of Game</span></h5>
+    		<p class="card-text"><b>Generation: <%= @out[:generation] %></b></p>
+
+    		<table style="border-collapse: collapse;">
+    			<% render 'home/grid', object: @game %>
+    		</table>
+
+      </div>
+    </div>
+
+<% end %>

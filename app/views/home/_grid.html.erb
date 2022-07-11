@@ -1,0 +1,7 @@
+<% @game['data'].each do |row| %>
+    <tr>
+    <%  row.each do |cell| %>
+            <td class="<%if cell == 0 %>bg-light <% else %> bg-danger <% end %>" style="width: 20px; height: 20px; border: 1px solid black;"></td>
+    <%  end  %>
+    </tr>
+<%  end %>
