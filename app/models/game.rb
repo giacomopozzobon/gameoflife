@@ -1,13 +1,17 @@
 class Game
 
-	attr_accessor :generation, :rows, :columns, :data, :speed, :grid
+	attr_accessor :generation, :rows, :columns, :data, :speed, :grid, :stop_after
 
-	def initialize(generation, rows, columns, data, speed)
+	def initialize(generation, rows, columns, data, speed, stop_after)
 		@generation = generation.to_i
 		@rows = rows.to_i
 		@columns = columns.to_i
 		@data = data
 		@speed = speed.to_f
+
+		puts "STOP AFTER"
+		puts stop_after.inspect
+		@stop_after = stop_after.to_i
 	end
 
 	def execute
@@ -43,7 +47,7 @@ class Game
 			status = 'stop'
 		end
 
-		if @generation > 30
+		if @generation > (@stop_after-1)
 			status = 'stop'
 		end
 

@@ -10,6 +10,6 @@ Rails.application.routes.draw do
   post '/start', controller: 'game', action: 'start'
 
   get '/game', controller: 'game', action: 'index'
-  get '/start', controller: 'game', action: 'start'
+  get '/end', controller: 'game', action: 'end'
 
 end
