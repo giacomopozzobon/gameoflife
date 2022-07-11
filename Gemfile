@@ -5,7 +5,6 @@ ruby "3.1.2"
 
 gem "rails", "~> 7.0.3"
 gem "sprockets-rails"
-gem "sqlite3", "~> 1.4"
 gem "puma", "~> 5.0"
 gem "importmap-rails"
 gem "turbo-rails"
@@ -26,6 +25,7 @@ end
 
 group :development do
   gem "web-console"
+  gem "sqlite3", "~> 1.4"
   gem 'rack-mini-profiler', '~> 2.0'
   gem 'listen', '~> 3.7', '>= 3.7.1'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
